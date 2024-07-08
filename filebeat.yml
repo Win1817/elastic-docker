@@ -3,6 +3,8 @@ filebeat.inputs:
   id: default-filestream
   paths:
     - /var/lib/docker/containers/*/*.log
+    - /var/log/pods:/var/log/pods:ro
+    - /var/lib/rancher/k3s/agent/containerd/io.containerd.runtime.v2.task/k8s.io:/var/lib/rancher/k3s/agent/containerd/io.containerd.runtime.v2.task/k8s.io:ro
 
 filebeat.autodiscover:
   providers:
