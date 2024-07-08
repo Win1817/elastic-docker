@@ -187,6 +187,8 @@ services:
       - "./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro"
       - "/var/lib/docker/containers:/var/lib/docker/containers:ro"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "/var/log/pods:/var/log/pods:ro"
+      - "/var/lib/rancher/k3s/agent/containerd/io.containerd.runtime.v2.task/k8s.io:/var/lib/rancher/k3s/agent/containerd/io.containerd.runtime.v2.task/k8s.io:ro"
     environment:
       - ELASTIC_USER=elastic
       - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
@@ -209,6 +211,8 @@ services:
       - logstashdata01:/usr/share/logstash/data
       - "./logstash_ingest_data/:/usr/share/logstash/ingest_data/"
       - "./logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro"
+      - "/var/log/pods:/var/log/pods:ro"
+      - "/var/lib/rancher/k3s/agent/containerd/io.containerd.runtime.v2.task/k8s.io:/var/lib/rancher/k3s/agent/containerd/io.containerd.runtime.v2.task/k8s.io:ro"
     environment:
       - xpack.monitoring.enabled=false
       - ELASTIC_USER=elastic
